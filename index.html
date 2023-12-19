@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<title>Programming Historian 1: Sentiment Analysis for Exploratory Data Analysis</title>
+<style>
+	html {
+    	display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    body {
+    	text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        max-width: 1000px;
+    }
+    
+    div {
+    	width: fit-content;
+        transition: 0.5s;
+        cursor: pointer;
+        font-size: 30px;
+        padding: 10px;
+        border-radius: 50px;
+        margin: 10px;
+        border: 5px solid #fff;
+    }
+    
+    .grey {
+		border: 5px solid rgba(128, 128, 128, 0.4);
+	}
+    
+    .lightGreen {
+		border: 5px solid rgba(152, 251, 152, 0.4);
+	}
+    
+	.green {
+		border: 5px solid rgba(0, 100, 0, 0.4);
+	}
+
+	.pink {
+		border: 5px solid rgba(255, 105, 180,0.4);
+	}
+
+	.red {
+		border: 5px solid rgba(255,0,0,0.4);
+	}
+</style>
+</head>
+<body>
+<div data-value='0'>Huh.</div>
+<div data-value='0'>I always assumed the shopkeepers live a soft life.</div>
+<div data-value='0.4215'>And it’s true, Peeta has always had enough to eat.</div>
+<div data-value='-0.8042'>But there’s something kind of depressing about living your life on stale bread, the hard, dry loaves that no one else wanted.</div>
+<div data-value='0.6476'>One thing about us, since I bring our food home on a daily basis, most of it is so fresh you have to make sure it isn’t going to make a run for it.</div>
+<div data-value='-0.0772'>Somewhere during my shift, the rain stops not gradually but all at once.</div>
+<div data-value='0'>The downpour ends and there’s only the residual drippings of water from branches, the rush of the now overflowing stream below us.</div>
+<div data-value='0.5994'>A full, beautiful moon emerges, and even without the glasses I can see outside.</div>
+<div data-value='0'>I can’t decide if the moon is real or merely a projection of the Gamemakers</div>
+<div data-value='0'>I know it was full shortly before I left home.</div>
+<div data-value='0'>Gale and I watched it rise as we hunted into the late hours.</div>
+<div data-value='0'>How long have I been gone?</div>
+<div data-value='0'>I’m guessing it’s been about two weeks in the arena, and there was that week of preparation in the Capitol.</div>
+<div data-value='0'>Maybe the moon has completed its cycle.</div>
+<div data-value='-0.4215'>For some reason, I badly want it to be my moon, the same one I see from the woods around District 12.</div>
+<div data-value='-0.2732'>That would give me something to cling to in the surreal world of the arena where the authenticity of everything is to be doubted.</div>
+<div data-value='0'>Four of us left.</div>
+<div data-value='0.5859'>For the first time, I allow myself to truly think about the possibility that I might make it home.</div>
+<div data-value='0.4404'>To fame.</div>
+<div data-value='0.4939'>To wealth.</div>
+<div data-value='0'>To my own house in the Victor’s Village.</div>
+<div data-value='0'>My mother and Prim would live there with me.</div>
+<div data-value='-0.788'>No more fear of hunger.</div>
+<div data-value='0.6003'>A new kind of freedom.</div>
+<div data-value='0'>But then...what?</div>
+<div data-value='0.3612'>What would my life be like on a daily basis?</div>
+<div data-value='0'>Most of it has been consumed with the acquisition of food.</div>
+<div data-value='-0.2912'>Take that away and I’m not really sure who I am, what my identity is.</div>
+<div data-value='-0.34'>The idea scares me some.</div>
+<div data-value='0'>I think of Haymitch, with all his money.</div>
+<div data-value='0'>What did his life become?</div>
+<div data-value='-0.6808'>He lives alone, no wife or children, most of his waking hours drunk.</div>
+<div data-value='0.4215'>I don’t want to end up like that.</div>
+</body>
+<script>
+$(document).ready(function () {
+	$("div").hover(function () {
+		var dataValue = parseFloat($(this).data('value'));
+		if (dataValue === 0) {
+			$(this).addClass("grey");
+		} else if (dataValue > 0 && dataValue < 0.5) {
+			$(this).addClass("lightGreen");
+		} else if (dataValue >= 0.5) {
+			$(this).addClass("green");
+		} else if (dataValue < 0 && dataValue > -0.5) {
+			$(this).addClass("pink");
+		} else if (dataValue <= -0.5) {
+			$(this).addClass("red");
+		}
+	}, function() {
+    	$(this).removeClass("grey lightGreen green pink red");
+    });
+});
+</script>
+</html>
